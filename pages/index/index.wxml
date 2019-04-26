@@ -1,13 +1,8 @@
 <!--index.wxml-->
 <view class='container'>
-  <image class="container-image" src='../../assets/images/indexBackImage.jpg' mode="scaleToFill"></image>
+  <image class='container-image' src='http://127.0.0.1:18718/assets/images/timg.jpg'></image>
   <view class='content'>
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      <text class="user-motto" bindtap="alertMessage">{{motto}}</text>
-    </block>
+    <image bind:touchmove='touchMoveFunc' bind:longpress='showTextFunc' class='userinfo-avatar' src='{{userInfo.avatarUrl}}' mode='cover'></image>
+    <text wx:if='{{showText}}' class='mainText'>awodnawidonawoidnaiondawiodaw</text>
   </view>
 </view>
-

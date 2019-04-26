@@ -1,19 +1,17 @@
 //index.js
 //获取应用实例
+const wxIcon = require('https://at.alicdn.com/t/font_1164570_prxug9o4xbg.css')
 const app = getApp()
 
 Page({
   data: {
     motto: '点我',
+    showText: false,
     userInfo: {},
+    status: 'index',
     hasUserInfo: false,
+    animationData: {},
     canIUse: wx.canIUse('button.open-type.getUserInfo')
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
@@ -43,6 +41,7 @@ Page({
       })
     }
   },
+
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -51,11 +50,34 @@ Page({
       hasUserInfo: true
     })
   },
-  alertMessage: function() {
-    wx.showToast({
-      title: '你是二傻子',
-      icon: 'success',
-      duration: 2000
+
+  touchMoveFunc: function(e) {
+    console.log(e)
+  },
+
+  showTextFunc: function(e) {
+    this.setData({
+      showText: true,
     })
-  }
+  },
+
+  backImageFadeOut: function() {
+    let animationFst = null,
+        animationSec = null
+    const animation = wx.createAnimation({
+      duration: 1000,
+      timingFunction: 'ease',
+    })
+
+    animationFst = animation
+    animationSec = animation
+
+    animationFst.opacity(0).step()
+    animationSec.opacity(1).step()
+
+    this.setData({
+      animationFstData: animationFst,
+      animationSecData: animationSec
+    })
+  },
 })
