@@ -1,8 +1,9 @@
 <!--index.wxml-->
 <view class='container'>
-  <image class='container-image' src='http://127.0.0.1:18718/assets/images/timg.jpg'></image>
+  <image class='container-image' src='../../assets/images/timg.jpg'></image>
   <view class='content'>
     <image bind:touchmove='touchMoveFunc' bind:longpress='showTextFunc' class='userinfo-avatar' src='{{userInfo.avatarUrl}}' mode='cover'></image>
     <text wx:if='{{showText}}' class='mainText'>awodnawidonawoidnaiondawiodaw</text>
+    <icon class="iconfont xiahua" style='font-size: 50px; color: #000; opacity: 0.2'></icon>
   </view>
 </view>

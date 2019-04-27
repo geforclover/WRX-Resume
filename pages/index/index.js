@@ -1,6 +1,6 @@
 //index.js
 //获取应用实例
-const wxIcon = require('https://at.alicdn.com/t/font_1164570_prxug9o4xbg.css')
+// const wxIcon = require('https://at.alicdn.com/t/font_1164570_prxug9o4xbg.css')
 const app = getApp()
 
 Page({
