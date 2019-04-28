@@ -11,7 +11,10 @@ Page({
     status: 'index',
     hasUserInfo: false,
     animationData: {},
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    revert: false,
+    pageUp: 0,
+    pageDown: 0
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
@@ -52,13 +55,25 @@ Page({
   },
 
   touchMoveFunc: function(e) {
+    this.data.pageUp = e.target.offsetTop
     console.log(e)
+    if (
+        (e.touches[0].pageY >= (app.globalData.systemInfo.windowHeight - e.target.offsetTop - 35)) && 
+        (e.touches[0].pageX > (e.target.offsetLeft - 15) && e.touches[0].pageX < (e.target.offsetLeft + 85))
+      ) {
+      this.setData({
+        showText: true,
+        revert: true
+      })
+    }
   },
 
   showTextFunc: function(e) {
-    this.setData({
-      showText: true,
-    })
+    console.log(e)
+    // this.setData({
+    //   showText: true,
+    // })
+    console.log(app.globalData.systemInfo)
   },
 
   backImageFadeOut: function() {

@@ -4,10 +4,10 @@
     "pages/basicInfo/basicInfo"
   ],
   "window": {
+    "backgroundColor": "#09194F",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#09194F",
+    "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json"
 }

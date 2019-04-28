@@ -1,9 +1,16 @@
 <!--index.wxml-->
 <view class='container'>
-  <image class='container-image' src='../../assets/images/timg.jpg'></image>
+  <view class='container-board'>
+    <text class='container-title'>Debug</text>
+    <text class='container-title'>&Write Bug</text>
+    <text class='container-float-title'>W&D</text>
+  </view>
+  <view bind:touchmove='touchMoveFunc'>
+    <view class='container-line'></view>
+    <view class='container-circle'></view>
+  </view>
   <view class='content'>
-    <image bind:touchmove='touchMoveFunc' bind:longpress='showTextFunc' class='userinfo-avatar' src='{{userInfo.avatarUrl}}' mode='cover'></image>
-    <text wx:if='{{showText}}' class='mainText'>awodnawidonawoidnaiondawiodaw</text>
-    <icon class="iconfont xiahua" style='font-size: 50px; color: #000; opacity: 0.2'></icon>
+    <text wx:if='{{showText}}' class='content-mainText'>awodnawidonawoidnaiondawiodaw</text>
+    <view class='content-icon'><icon class="iconfont xiahua" style='font-size: 50px; color: rgba(9,25,79,0.6);'></icon></view>
   </view>
 </view>
