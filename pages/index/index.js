@@ -5,94 +5,57 @@ const app = getApp()
 
 Page({
   data: {
-    motto: '点我',
     showText: false,
-    userInfo: {},
-    status: 'index',
-    hasUserInfo: false,
-    animationData: {},
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    revert: false,
-    pageUp: 0,
-    pageDown: 0
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+    showRing: true,
+    animatHeight: null,
+    animatHeightClass: ''
   },
 
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+  onLoad: function () {
+    console.log(app.globalData.systemInfo.screenHeight)
   },
 
   touchMoveFunc: function(e) {
+    let itemHeight = 0
+    const item = wx.createSelectorQuery();
+    item.select('.container-board').boundingClientRect().exec(rect => {
+      itemHeight = rect[0].height
+    })
+
     this.data.pageUp = e.target.offsetTop
-    console.log(e)
-    if (
-        (e.touches[0].pageY >= (app.globalData.systemInfo.windowHeight - e.target.offsetTop - 35)) && 
-        (e.touches[0].pageX > (e.target.offsetLeft - 15) && e.touches[0].pageX < (e.target.offsetLeft + 85))
-      ) {
+    this.setData({
+      animatHeight: itemHeight += e.touches[0].pageY - 50 + 'px'
+    })
+
+    if (e.touches[0].pageY > (app.globalData.systemInfo.screenHeight * 3 / 4)) {
       this.setData({
-        showText: true,
-        revert: true
+        animatHeightClass: 'container-board-down',
       })
+
+      setTimeout(() => {
+        this.setData({
+          showRing: false
+        })
+      }, 1000)
+    }
+  },
+
+  touchMoveEnd: function(e) {
+    if (e.target.offsetTop < (app.globalData.systemInfo.screenHeight * 3 / 4)) {
+      this.setData({
+        animatHeightClass: 'container-board-up',
+        animatHeight: '25vh'
+      })
+
+      setTimeout(() => {
+        this.setData({
+          animatHeightClass: ''
+        })
+      }, 1000)
     }
   },
 
   showTextFunc: function(e) {
     console.log(e)
-    // this.setData({
-    //   showText: true,
-    // })
-    console.log(app.globalData.systemInfo)
-  },
-
-  backImageFadeOut: function() {
-    let animationFst = null,
-        animationSec = null
-    const animation = wx.createAnimation({
-      duration: 1000,
-      timingFunction: 'ease',
-    })
-
-    animationFst = animation
-    animationSec = animation
-
-    animationFst.opacity(0).step()
-    animationSec.opacity(1).step()
-
-    this.setData({
-      animationFstData: animationFst,
-      animationSecData: animationSec
-    })
-  },
+  }
 })
