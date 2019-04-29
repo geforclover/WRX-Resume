@@ -1,9 +1,15 @@
 /**index.wxss**/
+.__mainColor{
+  background-color: rgba(32,54,107,1);
+}
+.__secColor {
+  background-color: rgba(255,251,203,1);
+}
+
 .container {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-color: rgba(249, 206, 0, 1);
 }
 
 @keyframes changeHeight {
@@ -19,7 +25,6 @@
   justify-content: flex-start;
   align-items: center;
   min-height: 25vh;
-  background-color: rgba(9,25,79,1);
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;
 }
@@ -41,14 +46,12 @@
   margin: 0 auto;
   width: 1vw;
   height: 7vh;
-  background-color: rgba(9,25,79,1);
 }
 
 .container-circle {
   margin: 0 auto;
   width: 3vw;
   height: 3vw;
-  border: 1vw solid rgba(9,25,79,1);
   border-radius: 50%;
 }
 

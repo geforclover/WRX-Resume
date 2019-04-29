@@ -1,13 +1,13 @@
 <!--index.wxml-->
-<view class='container'>
-  <view class='container-board {{animatHeightClass}}' style='height: {{animatHeight}}'>
+<view class='container __secColor'>
+  <view class='container-board __mainColor {{animatHeightClass}}' style='height: {{animatHeight}}'>
     <text class='container-title'>Debug</text>
     <text class='container-title'>&Write Bug</text>
     <text class='container-float-title'>W&D</text>
   </view>
   <view wx:if='{{showRing}}' bind:touchmove='touchMoveFunc' bind:touchend='touchMoveEnd' style='background'>
-    <view class='container-line'></view>
-    <view class='container-circle'></view>
+    <view class='container-line __mainColor'></view>
+    <view class='container-circle __mainColor'></view>
   </view>
   <view class='content'>
     <!-- <text wx:if='{{showText}}' class='content-mainText'>awodnawidonawoidnaiondawiodaw</text> -->
