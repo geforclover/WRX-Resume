@@ -5,7 +5,6 @@ const app = getApp()
 
 Page({
   data: {
-    showText: false,
     showRing: true,
     boardHeight: null,
     blockHeight: 0,
@@ -16,11 +15,16 @@ Page({
     transPtClass: '',
     transNtClass: '',
     currentPageY: 0,
-    mainTextClass: ''
+    mainTextClass: '',
+    noneBorderClass: ''
   },
 
   onLoad: function () {
-    console.log(app.globalData.systemInfo.screenHeight)
+    setTimeout(() => {
+      this.setData({
+        noneBorderClass: 'containert-mainText-item__noneBorder'
+      })
+    }, 3500)
   },
 
   touchMoveFunc: function(e) {
@@ -30,7 +34,6 @@ Page({
       itemHeight = rect[0].height
     })
 
-    this.data.pageUp = e.target.offsetTop
     this.setData({
       boardHeight: itemHeight += e.touches[0].pageY - 60 + 'px',
     })
@@ -60,17 +63,23 @@ Page({
         boardHeightClass: 'container-board-down',
         mainTextClass: 'containert-mainText__color'
       })
+    } else {
+      this.setData({
+        mainTextClass: ''
+      })
     }
   },
 
   touchMoveEnd: function(e) {
+    console.log(e.target.offsetTop, app.globalData.systemInfo.screenHeight * 3 / 4)
     if (e.target.offsetTop < (app.globalData.systemInfo.screenHeight * 3 / 4)) {
       this.setData({
         boardHeightClass: 'container-board-up',
         boardHeight: '25vh',
         blockHeight: 0,
         transPtNum: 120,
-        transNtNum: -120
+        transNtNum: -120,
+        mainTextClass: ''
       })
 
       setTimeout(() => {
@@ -93,10 +102,6 @@ Page({
       transPtClass: 'transform-positiveRun',
       transNtClass: 'transform-negativeRun'
     })
-  },
-
-  showTextFunc: function(e) {
-    console.log(e)
   },
 
   onOverTransition: function () {

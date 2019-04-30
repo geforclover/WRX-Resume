@@ -1,41 +1,15 @@
-<!--index.wxml-->
-<view class='container __secColor'>
-  <view class='container-board __mainColor {{boardHeightClass}}' style='height: {{boardHeight}}' bind:transitionend='{{onOverTransition}}'>
-    <text class='container-board-title'>Debug</text>
-    <text class='container-board-title'>&Write Bug</text>
-    <text class='container-board-slogan'>W&D</text>
-    <view class='container-block {{blockHeightClass}}' style='height: {{blockHeight}}vh'>
-      <view class='container-block-panel'>
-        <text class='container-block-text transform-positive {{transPtClass}}' 
-          style='font-size: 20px; transform: translateX({{transPtNum}}%); transition: transform .5s; transiton-delay: 1s'>王瑞祥  </text>
-        <text class='container-block-text transform-positive {{transPtClass}}'
-          style='font-size: 22px; transform: translateX({{transPtNum}}%); transition: transform .8s; transiton-delay: 1.3s'>大连海事大学</text>
-        <text class='container-block-text transform-positive {{transPtClass}}'
-          style='transform: translateX({{transPtNum}}%); transition: transform .5s; transiton-delay: 2.1s'>公共事业管理</text>
-      </view>
-      <view class='container-block-splitLine __secColor'></view>
-      <view class='container-block-panel'>
-        <text class='container-block-text transform-negative {{transNtClass}}'
-          style='font-size: 24px; transform: translateX({{transNtNum}}%); transition: transform .4s; transiton-delay: 1.5s'>前端工程师</text>
-        <text class='container-block-text transform-negative {{transNtClass}}'
-          style='transform: translateX({{transNtNum}}%); transition: transform .2s; transiton-delay: 2s'>所在天津</text>
-        <text class='container-block-text transform-negative {{transNtClass}}'
-          style='font-size: 20px; transform: translateX({{transNtNum}}%); transition: transform .5s; transiton-delay: 3s'>本科</text>
-      </view>
+<view class='container'>
+  <view class='container-blur' style='background: url("../../assets/images/background.jpg") no-repeat center center;'></view>
+  <view class='container-panel'>
+    <view class='container-panel-avatar'>
+      <image src='../../assets/images/panel-avatar.jpg'></image>
+      <view class='container-panel-avatar__shadow'></view>
     </view>
-  </view>
-  <view wx:if='{{showRing}}' bind:touchmove='touchMoveFunc' bind:touchend='touchMoveEnd'>
-    <view class='container-line __mainColor'></view>
-    <view class='container-circle __mainColor'></view>
-  </view>
-  <view class='container-icon'>
-    <view class='container-icon-xiahua'>
-      <icon class="iconfont xiahua" style='font-size: 50px; color: rgba(9,25,79,0.6);'></icon>
+    <view class='container-panel-content'>
+      <view class='container-panel-block'></view>
+      <view class='container-panel-block'></view>
+      <view class='container-panel-block'></view>
     </view>
-  </view>
-  <view class='containert-mainText'>
-    <text class='containert-mainText-item {{mainTextClass}}'>awodnawidona</text>
-    <text class='containert-mainText-item {{mainTextClass}}' style='transition-delay: .1s'>aaaa</text>
-    <text class='containert-mainText-item {{mainTextClass}}' style='transition-delay: .2s'>qweqqweqw</text>
+    <view class='container-panel-footer'></view>
   </view>
 </view>
