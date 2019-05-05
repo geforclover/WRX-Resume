@@ -1,5 +1,6 @@
 <view class='container'>
-  <view class='container-blur' style='background: url("../../assets/images/background.jpg") no-repeat center center;'></view>
+  <view class='container-clip'></view>
+  <!-- <view class='container-blur' style='background: url("../../assets/images/background.jpg") no-repeat center center;'></view>
   <view class='container-panel'>
     <view class='container-panel-avatar'>
       <image src='../../assets/images/panel-avatar.jpg'></image>
@@ -11,5 +12,5 @@
       <view class='container-panel-block'></view>
     </view>
     <view class='container-panel-footer'></view>
-  </view>
+  </view> -->
 </view>

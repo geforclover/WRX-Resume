@@ -8,9 +8,20 @@ page {
 .container {
   width: 100vw;
   height: 100vh;
+  background: linear-gradient(135deg, #2E3951 0%, #4D5872 100%);
 }
 
-.container-blur {
+.container-clip {
+  width: 100vw;
+  height: 100%;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 0% 50%);
+  background: linear-gradient(162deg, #2E3951 40%, rgba(0, 0, 0, 0.7) 50%);
+  position: absolute;
+}
+
+
+
+/* .container-blur {
   width: 100vw;
   height: 100vh;
   filter:blur(9px);
@@ -71,7 +82,21 @@ page {
   height: 25%;
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
-}
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @keyframes changeHeight {
   from { 
