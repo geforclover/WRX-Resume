@@ -8,15 +8,36 @@ page {
 .container {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(135deg, #2E3951 0%, #4D5872 100%);
+  background: #FFC107;
 }
 
-.container-clip {
-  width: 100vw;
-  height: 100%;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 0% 50%);
-  background: linear-gradient(162deg, #2E3951 40%, rgba(0, 0, 0, 0.7) 50%);
+.container-block {
+  width: 80%;
+  height: 80%;
   position: absolute;
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container-blockFront {
+  top: 7%;
+  left: 7%;
+  z-index: 2;
+}
+
+.container-blockBack {
+  top: 12%;
+  left: 14%;
+  z-index: 1;
+}
+
+.container-blockImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  box-shadow: 5px 5px 8px 0px rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 
@@ -98,7 +119,7 @@ page {
 
 
 
-@keyframes changeHeight {
+/* @keyframes changeHeight {
   from { 
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%;
@@ -299,4 +320,4 @@ page {
 
 .containert-mainText-icon {
   font-size: 115%; margin-left: 2vw;
-}
+} */

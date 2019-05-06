@@ -4,9 +4,9 @@
     "pages/basicInfo/basicInfo"
   ],
   "window": {
-    "backgroundColor": "#2E3951",
+    "backgroundColor": "#FFC107",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#2E3951",
+    "navigationBarBackgroundColor": "#FFC107",
     "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json"

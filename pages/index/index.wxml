@@ -1,5 +1,10 @@
 <view class='container'>
-  <view class='container-clip'></view>
+  <view class='container-block container-blockFront' style='background-image: url("../../assets/images/container-blockFront.jpg")'>
+    <view class='container-blockImage'></view>
+  </view>
+  <view class='container-block container-blockBack' style='background-image: url("../../assets/images/container-blockBack.jpg")'>
+    <view class='container-blockImage'></view>
+  </view>
   <!-- <view class='container-blur' style='background: url("../../assets/images/background.jpg") no-repeat center center;'></view>
   <view class='container-panel'>
     <view class='container-panel-avatar'>
