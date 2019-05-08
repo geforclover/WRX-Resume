@@ -1,9 +1,35 @@
-<view class='container'>
-  <view class='container-block container-blockFront' style='background-image: url("../../assets/images/container-blockFront.jpg")'>
-    <view class='container-blockImage'></view>
+<view class='main'>
+  <view class='main-border'></view>
+  <view class='main-conut'>
+    <view class='main-conut-wrap' bind:transitionend="returnCountClass">
+      <text class='main-count-current' style='left: 0;'>0</text>
+      <text class='main-count-current {{fstCountClass}}' style='right: 0'>{{currentCount}}</text>
+      <text class='main-count-current {{secCountClass}}' style='right: 0'>{{currentCount}}</text>
+      <text class='main-count-current {{trdCountClass}}' style='right: 0'>{{nextCount}}</text>
+    </view>
+    <view class='main-count-splitLine'></view>
+    <view class='main-conut-wrap' style='line-height: 1;'>
+      <text class='main-count-max' style='left: 0;'>0</text>
+      <text class='main-count-max' style='left: 2vw;'>{{maxCount}}</text>
+    </view>
   </view>
-  <view class='container-block container-blockBack' style='background-image: url("../../assets/images/container-blockBack.jpg")'>
-    <view class='container-blockImage'></view>
+  <view class='main-menu' style='transform: translateX({{initTrans}}vw);'>
+    <text
+      wx:for="{{menuItem}}"
+      wx:for-index="idx"
+      wx:key="{{idx}}"
+      data-index="{{idx}}"
+      data-item="{{item}}"
+      bindtap='clickMenuItem'
+      class='main-menu-item {{idx === current? "__current-item" : null}}'>{{item.title}}</text>
+  </view>
+  <view class='main-content'>
+    <image class='main-content-image' src='../../assets/images/main-content-image.jpg'></image>
+    <text class='main-content-text'>FRONT</text>
+    <text class='main-content-text'>ENGINEER</text>
+  </view>
+  <view class='main-button' bindtap='{{currentCount < maxCount ? "nextContent" : null}}'>
+    <text>Next</text>
   </view>
   <!-- <view class='container-blur' style='background: url("../../assets/images/background.jpg") no-repeat center center;'></view>
   <view class='container-panel'>

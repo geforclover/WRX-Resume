@@ -5,112 +5,62 @@ const app = getApp()
 
 Page({
   data: {
-    showRing: true,
-    boardHeight: null,
-    blockHeight: 0,
-    boardHeightClass: '',
-    blockHeightClass: '',
-    transPtNum: 120,
-    transNtNum: -120,
-    transPtClass: '',
-    transNtClass: '',
-    currentPageY: 0,
-    mainTextClass: '',
-    noneBorderClass: ''
+    menuItem: [
+      { title: 'INFORMATION', count: 4 },
+      { title: 'EXPERIENCE', count: 5 },
+      { title: 'PROJECT', count: 5 },
+      { title: 'CONTACT', count: 1 }
+    ],
+    current: 0,
+    initTrans: 14,
+    currentCount: 1,
+    nextCount: 0,
+    maxCount: 0,
+    fstCountClass: '__count-prev',
+    secCountClass: '__count-current',
+    trdCountClass: '__count-next'
   },
+
+  countClassList: ['__count-prev', '__count-current', '__count-next'],
 
   onLoad: function () {
-    setTimeout(() => {
-      this.setData({
-        noneBorderClass: 'containert-mainText-item__noneBorder'
-      })
-    }, 3500)
+    this.setData({
+      maxCount: this.data.menuItem[0].count
+    })
   },
 
-  touchMoveFunc: function(e) {
-    let itemHeight = 0
-    const item = wx.createSelectorQuery();
-    item.select('.container-board').boundingClientRect().exec(rect => {
-      itemHeight = rect[0].height
+  clickMenuItem: function (e) {
+    let _dataset = e.target.dataset,
+      currentTrans = this.data.initTrans + (this.data.current - _dataset.index) * 26
+
+    this.countClassList = ['__count-prev', '__count-current', '__count-next'],
+    this.setData({
+      current: _dataset.index,
+      maxCount: _dataset.item.count,
+      initTrans: currentTrans,
+      currentCount: 1,
+      fstCountClass: '__count-prev',
+      secCountClass: '__count-current',
+      trdCountClass: '__count-next'
     })
+  },
+
+  nextContent: function () {
+    let _item = this.countClassList.pop()
+
+    this.countClassList.unshift(_item)
 
     this.setData({
-      boardHeight: itemHeight += e.touches[0].pageY - 60 + 'px',
+      fstCountClass: this.countClassList[0],
+      secCountClass: this.countClassList[1],
+      trdCountClass: this.countClassList[2],
+      nextCount: this.data.currentCount += 1
+    }, () => {
+      this.setData({
+        currentCount: this.data.nextCount
+      })
     })
 
-    if ((e.touches[0].pageY - this.data.currentPageY > 0) && this.data.currentPageY !== 0) {
-      this.setData({
-        blockHeight: this.data.blockHeight < 20 ? this.data.blockHeight += 0.5 : 22,
-        transPtNum: this.data.transPtNum > 0 ? this.data.transPtNum -= (100 / 20) : 0,
-        transNtNum: this.data.transNtNum < 0 ? this.data.transNtNum += (100 / 20) : 0,
-        currentPageY: e.touches[0].pageY
-      })
-    } else if((e.touches[0].pageY - this.data.currentPageY < 0) && this.data.currentPageY !== 0) {
-      this.setData({
-        blockHeight: this.data.blockHeight > 0 ? this.data.blockHeight -= .5 : 0,
-        transPtNum: this.data.transPtNum < 120 ? this.data.transPtNum += (100 / 20) : 120,
-        transNtNum: this.data.transNtNum > -120 ? this.data.transNtNum -= (100 / 20) : -120,
-        currentPageY: e.touches[0].pageY
-      })
-    } else {
-      this.setData({
-        currentPageY: e.touches[0].pageY
-      })
-    }
-
-    if (e.touches[0].pageY >= (app.globalData.systemInfo.screenHeight * 3 / 4)) {
-      this.setData({
-        boardHeightClass: 'container-board-down',
-        mainTextClass: 'containert-mainText__color'
-      })
-    } else {
-      this.setData({
-        mainTextClass: ''
-      })
-    }
+    
   },
-
-  touchMoveEnd: function(e) {
-    console.log(e.target.offsetTop, app.globalData.systemInfo.screenHeight * 3 / 4)
-    if (e.target.offsetTop < (app.globalData.systemInfo.screenHeight * 3 / 4)) {
-      this.setData({
-        boardHeightClass: 'container-board-up',
-        boardHeight: '25vh',
-        blockHeight: 0,
-        transPtNum: 120,
-        transNtNum: -120,
-        mainTextClass: ''
-      })
-
-      setTimeout(() => {
-        this.setData({
-          boardHeightClass: '',
-          blockHeightClass: ''
-        })
-      }, 1000)
-    } else {
-      this.setData({
-        blockHeight: 22,
-        transPtNum: 0,
-        transNtNum: 0,
-        currentPageY: 0
-      })
-    }
-
-    this.setData({
-      blockHeightClass: 'container-block__back',
-      transPtClass: 'transform-positiveRun',
-      transNtClass: 'transform-negativeRun'
-    })
-  },
-
-  onOverTransition: function () {
-    if (this.data.boardHeightClass === 'container-board-down') {
-      setTimeout(() => {
-        this.setData({
-          showRing: false
-        })
-      }, 1000)
-    }
-  }
 })
