@@ -18,7 +18,7 @@ Page({
     maxCount: 0,
     fstCountClass: '__count-prev',
     secCountClass: '__count-current',
-    trdCountClass: '__count-next'
+    trdCountClass: '__count-next',
   },
 
   countClassList: ['__count-prev', '__count-current', '__count-next'],
@@ -41,7 +41,7 @@ Page({
       currentCount: 1,
       fstCountClass: '__count-prev',
       secCountClass: '__count-current',
-      trdCountClass: '__count-next'
+      trdCountClass: '__count-next',
     })
   },
 
@@ -54,13 +54,21 @@ Page({
       fstCountClass: this.countClassList[0],
       secCountClass: this.countClassList[1],
       trdCountClass: this.countClassList[2],
-      nextCount: this.data.currentCount += 1
+      nextCount: this.data.currentCount += 1,
     }, () => {
       this.setData({
         currentCount: this.data.nextCount
       })
     })
-
-    
   },
+
+  replay: function () {
+    this.countClassList = ['__count-prev', '__count-current', '__count-next'],
+      this.setData({
+        currentCount: 1,
+        fstCountClass: '__count-prev',
+        secCountClass: '__count-current',
+        trdCountClass: '__count-next',
+      })
+  }
 })

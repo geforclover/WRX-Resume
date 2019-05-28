@@ -24,12 +24,20 @@
       class='main-menu-item {{idx === current? "__current-item" : null}}'>{{item.title}}</text>
   </view>
   <view class='main-content'>
-    <image class='main-content-image' src='../../assets/images/main-content-image.jpg'></image>
+    <image class='main-content-image {{currentCount === 2 ? "main-content-image__trans" : null}}' src='../../assets/images/main-content-image.jpg'></image>
     <text class='main-content-text'>FRONT</text>
     <text class='main-content-text'>ENGINEER</text>
   </view>
-  <view class='main-button' bindtap='{{currentCount < maxCount ? "nextContent" : null}}'>
-    <text>Next</text>
+  <view class='main-info-univer'>
+    <text class='main-info-text {{currentCount === 2 ? "main-info-text_show" : null}}' style='font-size: 22px; margin: 0 4px 2px 0;'>毕业于大连海事大学</text>
+    <view class='main-info-line {{currentCount === 2 ? "main-info-line__show" : null}}'>
+      <view class='_line-left {{currentCount === 2 ? "_line-left__withe" : null}}'></view>
+      <view class='_line-right'></view>
+    </view>
+    <text class='main-info-text {{currentCount === 2 ? "main-info-text_show" : null}}' style='font-size: 16px; margin: 2px 4px 0 0;'>Graduated from Dalian Maritime University</text>
+  </view>
+  <view class='main-button' bindtap='{{currentCount < maxCount ? "nextContent" : "replay"}}'>
+    <text>{{currentCount < maxCount ? 'Next' : 'Replay'}}</text>
   </view>
   <!-- <view class='container-blur' style='background: url("../../assets/images/background.jpg") no-repeat center center;'></view>
   <view class='container-panel'>
